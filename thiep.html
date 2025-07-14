@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thiệp Trái Tim</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffe4ec;
+      overflow: hidden;
+      height: 100vh;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .heart {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: #e91e63;
+      transform: rotate(45deg);
+      animation: fall linear infinite;
+      opacity: 0.8;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: #e91e63;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -25px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -25px;
+      top: 0;
+    }
+
+    @keyframes fall {
+      0% {
+        top: -10%;
+        opacity: 0;
+      }
+      30% {
+        opacity: 1;
+      }
+      100% {
+        top: 110%;
+        opacity: 0;
+      }
+    }
+
+    .card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      font-size: 24px;
+      color: #d81b60;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    Gửi bạn một chút yêu thương 💌
+  </div>
+
+  <!-- Random hearts -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 10000); // Xóa sau khi rơi xong
+    }
+
+    setInterval(createHeart, 100); // Tạo trái tim mỗi 300ms
+  </script>
+
+</body>
+</html>
